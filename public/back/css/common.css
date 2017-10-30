@@ -14,6 +14,10 @@ ul{
     margin: 0;
     padding: 0;
 }
+.lt_main .table td {
+    text-align: center;
+    vertical-align: middle;
+}
 
 
 .mt150 {
