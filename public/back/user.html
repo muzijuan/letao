@@ -71,10 +71,9 @@
                 </tr>
                 </thead>
                 <tbody>
-
+                    <!--动态渲染区间-->
                 </tbody>
             </table>
-
             <div class="text-right">
                 <ul id="paginator"></ul>
             </div>
@@ -82,7 +81,7 @@
 
         <!--//模态框-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" >
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -99,6 +98,24 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="userModal" tabindex="-1" role="dialog" >
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" >温馨提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        <i class="glyphicon glyphicon-info-sign text-danger"></i>
+                        <span class="text-danger">您确定要执行此操作吗？</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary btn_confirm">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
@@ -109,7 +126,8 @@
         <td>{{v.username}}</td>
         <td>{{v.mobile}}</td>
         <td>{{v.isDelete===1?"正常":"禁用"}}</td>
-        <td>
+        <!--把用户的id和启用状态存储在按钮上,加到按钮们的父元素上-->
+        <td data-id="{{v.id}}" data-is-delete="{{v.isdelete}}">
             {{if v.isDelete===1}}
             <button class="btn btn-sm btn-danger">禁用</button>
             {{/if}}

@@ -29,18 +29,34 @@ $(function () {
                         render();
                     }
                 });
-
             }
         })
-
     }
-
-
-
-
 render();
+    //点击启用或者禁用按钮,弹出模态框
+    //事件委托
+    $("tbody").on("click",".btn",function () {
+        $("#userModal").modal("show");
+        var id=$(this).parent().data("id");
+        var isDelete=$(this).parent().data("isDelete");
+        isDelete=isDelete===1?0:1;
+        $(".btn_confirm").off().on("click",function () {
+            //发送ajax请求
+           $.ajax({
+              type:"post" ,
+               url:"/user/updateUser",
+               data:{
+                   id:id,
+                   isDelete:isDelete
+               },
+               success:function (data) {
+                   $("#userModal").modal("hide");
+                   render();
+               }
+           })
+        })
 
-
+    })
 
 
 
