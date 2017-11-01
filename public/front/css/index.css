@@ -1,0 +1,45 @@
+.lt_nav {
+  padding: 10px;
+}
+
+.lt_nav li {
+  width: 33.33%;
+  float: left;
+}
+
+.lt_nav li img{
+	width: 100%;
+	display: block;
+}
+.lt_product{
+	text-align: center;
+	padding: 10px
+}
+.lt_product ul li{
+float: left;
+width: 48%;
+padding:5px;
+box-sizing:border-box;
+}
+.lt_product ul a{
+	/*width: 100%;*/
+	height:100%;
+	display: block;
+	border: 1px solid #ccc
+
+}
+.lt_product ul img{
+width: 100%;
+display: block;
+
+
+}
+.lt_product ul span:first-child{
+color: red;
+
+
+}
+.lt_product ul span:last-child{
+text-decoration: line-through;
+
+}

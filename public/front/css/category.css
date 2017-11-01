@@ -1,0 +1,20 @@
+
+.aside{
+width: 90px;
+height: 100%;
+position: absolute;
+background-color: pink;
+}
+
+.lt_content .aside li{
+
+height: 50px;
+line-height: 50px;
+border-right: 1px solid dashed
+
+
+
+
+
+
+}
