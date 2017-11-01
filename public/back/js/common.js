@@ -1,16 +1,16 @@
 
 //校验用户是否登录
-if(location.href.indexOf("login.html")<0){
-    $.ajax({
-        type:"get",
-        url:"/employee/employeeLogin",
-        success:function (data) {
-            if(data.error===400){
-                location.href="login.html";
-            }
-        }
-    });
-}
+// if(location.href.indexOf("login.html")<0){
+//     $.ajax({
+//         type:"get",
+//         url:"/employee/employeeLogin",
+//         success:function (data) {
+//             if(data.error===400){
+//                 location.href="login.html";
+//             }
+//         }
+//     });
+// }
 $(document).ajaxStart(function () {
       NProgress.start();
 });

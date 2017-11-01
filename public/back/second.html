@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>木子管理系统-用户管理</title>
+    <title>木子管理系统-二级分类</title>
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="lib/bootstrap-validator/css/bootstrapValidator.css">
     <link rel="stylesheet" href="css/common.css">
@@ -31,7 +31,7 @@
                     分类管理
                 </a>
                 <div class="child" style="display:block">
-                    <a href="first.html">一级分类</a>
+                    <a href="first.html" >一级分类</a>
                     <a href="second.html" class="now">二级分类</a>
                 </div>
             </li>
@@ -43,9 +43,6 @@
             </li>
         </ul>
     </div>
-
-
-
 
 </div>
 <div class="lt_main">
@@ -60,13 +57,30 @@
             <li class="active">二级分类</li>
         </ol>
         <div class="lt_content">
-            <div class="pic_left pull-left">11</div>
-            <div class="pic_right pull-right">22</div>
+            <button class="btn btn-default btn_add ">添加分类</button>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <td width="10%">序号</td>
+                    <td width="30%">一级分类名称</td>
+                    <td width="30%">二级分类名称</td>
+                    <td width="30%">二级分类Logo</td>
+                </tr>
+                </thead>
+                <tbody>
+
+                <!--动态渲染区间-->
+                </tbody>
+            </table>
+            <div class="text-right">
+                <ul id="paginator"></ul>
+            </div>
         </div>
 
         <!--//模态框-->
+        <!--退出登录-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" >
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -83,24 +97,84 @@
                 </div>
             </div>
         </div>
+
+
+        <!--添加分类-->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" >
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" >添加二级分类</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form">
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                        <span class="dropdown-text">请选择一级分类</span>
+                                        <!--这个可以用来传输数据，并且不会显示出来。-->
+                                        <input type="hidden" name="categoryId" id="categoryId">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <input type="hidden" name="hot" value="1">
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                      <!--模板渲染-->
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="brandName" name="brandName" placeholder="请输入二级分类名称">
+                            </div>
+                            <div class="form-group">
+                               <div class="fileupload_box">
+                                   <button class="btn btn-default">上传图片</button>
+                                   <input id="fileupload" class="btn btn-default" type="file" name="pic1" data-url="/category/addSecondCategoryPic" multiple>
+                               </div>
+                            </div>
+                            <div class="form-group img_box">
+                                <img src="images/none.png" width="100" height="100" alt="">
+                                <input type="hidden" name="brandLogo" id="brandLogo">
+
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" form="form" data-dismiss="modal">取消</button>
+                        <button type="submit" form="form" class="btn_confirm btn btn-primary">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>
-
-
-
-
-
-
-
-
-
+<script type="text/html" id="tpl">
+    {{each rows v i}}
+    <tr>
+        <td>{{(page-1)*size+i+1}}</td>
+        <td>{{v.categoryName}}</td>
+        <td>{{v.brandName}}</td>
+        <td><img alt="" width="50" height="50" src="{{v.brandLogo?v.brandLogo:'images/none.png'}}"></td>
+    </tr>
+    {{/each}}
+</script>
+<script type="text/html" id="tpl2">
+    {{each rows v i}}
+    <li><a href="javascript:;" data-id="{{v.id}}">{{v.categoryName}}</a></li>
+    {{/each}}
+</script>
 
 <script src="lib/jquery/jquery.js"></script>
+<script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
 <script src="lib/bootstrap/js/bootstrap.js"></script>
 <script src="lib/bootstrap-validator/js/bootstrapValidator.js"></script>
+<script src="lib/bootstrap-paginator/bootstrap-paginator.js"></script>
 <script src="lib/nprogress/nprogress.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
 <script src="js/common.js"></script>
-<!--<script src="js/login.js"></script>-->
+<script src="js/second.js"></script>
 </body>
 </html>
