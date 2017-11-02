@@ -17,35 +17,27 @@
 		<div class="lt_header">
 			<a href="index.html" class="lt_header_l"><span class="fa fa-chevron-left"></span></a>
 			<h4>乐淘分类</h4>
-			<a href="search.html" class="lt_header_r"><span class="fa fa-search"></span></a>
+			<a href="search2.html" class="lt_header_r"><span class="fa fa-search"></span></a>
 		</div>
 			<!-- 内容部分 -->
-		<div class="lt_content">
+		<div class="lt_content mui-clearfix">
 <!-- 侧边 -->
 			<div class="aside">
 				<div class="mui-scroll-wrapper">
 					 <ul class="mui-scroll">
-         	 <li>运动馆</li>
-         	 <li>运动馆</li>
-         	 <li>运动馆</li>
-         	 <li>运动馆</li>
-         	 <li>运动馆</li>
-         	 <li>运动馆</li>
-         	 <li>运动馆</li>
-         	 <li>运动馆</li>
-         	 <li>运动馆</li>
-         	 <li>运动馆</li>
-         	 <li>运动馆</li>
-         	 <li>运动馆</li>
-         	 <li>运动馆</li>
-         	 <li>运动馆</li>
-         	 <li>运动馆</li>
+         	 <!-- 挖个坑 -->
        		 </ul>
 				</div>
 			</div>
 <!-- 侧边 -->
 
-
+		<div class="lt_category_r">
+				<div class="mui-scroll-wrapper">
+					 <ul class="mui-scroll  mui-clearfix">
+         	 <!-- 挖个坑 -->
+       		 </ul>
+				</div>
+			</div>
 
 		</div>
 
@@ -79,12 +71,35 @@
 			
 			</ul>
 		</div>
-
-
-
-
-
 	</div>
+
+	<!-- 拿一级分类数据 -->
+<script type="text/html" id="tpl">
+	{{each rows v i}}
+		<li data-id="{{v.id}}" class="{{i===0?'now':''}}"><a href="javascript:;">{{v.categoryName}}</a></li>
+	{{/each}}
+</script>
+
+
+<script type="text/html" id="tpl2">
+	{{if rows.length===0}}
+	<p class="info">暂时没有更多的数据啦</p>
+	{{/if}}
+	
+	{{each rows v i}}
+		<li>
+			<a href="#">
+				<img src="{{v.brandLogo}}">
+				<p>{{v.brandName}}</p>
+			</a>
+		</li>
+		
+	{{/each}}
+
+
+</script>
+
+
 <script src="lib/mui/js/mui.js"></script>
 <script src="lib/zepto/zepto.min.js"></script>
 <script src="lib/artTemplate/template-web.js"></script>
