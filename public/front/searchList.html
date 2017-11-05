@@ -31,23 +31,29 @@
         <!-- 排序栏 -->
         <div class="lt_sort mui-clearfix">
           <div class="lt_sort_son">
-            <span>上架时间</span>
+            上架时间
             <span class="fa fa-angle-down"></span>
           </div>
-          <div class="lt_sort_son">
-            <span>价格</span>
+          <div class="lt_sort_son" data-type="price">
+           价格
             <span class="fa fa-angle-down"></span>
           </div >
-          <div class="lt_sort_son">
-            <span>库存</span>
+          <div class="lt_sort_son" data-type="num">
+            库存
             <span class="fa fa-angle-down"></span>
           </div>
           <div class="lt_sort_son">
-            <span>折扣</span>
+           折扣
             <span class="fa fa-angle-down"></span>
           </div>
         </div>
         <!-- 排序栏 -->
+
+        <div class="lt_product mui-clearfix">
+          <div class="loading"></div>
+
+        </div>
+
       </div>
     </div>
   </div>
@@ -86,11 +92,33 @@
 
 
 <script type="text/html" id="tpl">
- 
+    {{if data.length===0}}
+ <p>没有搜索到相关的商品</p>
+{{/if}}
+
+{{each data v i}}
+<a href="product.html?productId={{v.id}}" class="item1">
+   {{if v.pic.length === 0}}
+   <img src="images/product.jpg">
+   {{/if}}
+   {{if v.pic.length > 0}}
+    <img src="{{v.pic[0].picAddr}}">
+   {{/if}}
+    <p class="mui-ellipsis-2">{{v.proName}}</p>
+    <p class="price">
+      <span>&yen;{{v.price}}</span>
+      <span>&yen;{{v.oldPrice}}</span>
+    </p>
+    <button class="mui-btn-blue buy_now" >立即购买</button>
+  </a>
+{{/each}}
+
 </script>
 <script src="lib/mui/js/mui.js"></script>
 <script src="lib/zepto/zepto.min.js"></script>
 <script src="lib/artTemplate/template-web.js"></script>
+
+<script src="js/common.js"></script>
 <script src="js/searchList.js"></script>
 </body>
 </html>

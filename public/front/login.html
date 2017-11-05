@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>乐淘商城-搜索页</title>
+  <title>乐淘商城-登录页</title>
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="lib/mui/css/mui.css">
   <link rel="stylesheet" href="lib/fa/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/search2.css">
+  <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 
@@ -17,22 +17,31 @@
 <div class="container">
   <div class="lt_header">
     <a class="lt_header_l" href="javascript:history.go(-1);"><span class="fa fa-chevron-left"></span></a>
-    <h4>搜索中心</h4>
+    <h4>登录</h4>
   </div>
 
-  <div class="lt_content">
-    <div class="mui-scroll-wrapper">
-      <div class="mui-scroll">
-        <div class="lt_search">
-          <input type="text" class="search_text" placeholder="请输入搜索关键字">
-          <button class="mui-btn-blue search_btn">搜索</button>
-        </div>
-        <div class="lt_history">
-         <!-- 挖个坑 -->
-        </div>
+   <div class="lt_content">
+    <form class="mui-input-group" class="login">
+      <div class="mui-input-row">
+        <label>用户名</label>
+        <input type="text" placeholder="请输入用户名" name="username">
       </div>
-    </div>
+
+      <div class="mui-input-row">
+        <label>密码</label>
+        <input type="password" name="password" class="mui-input-password" placeholder="请输入密码">
+      </div>
+      <div class="mui-button-row">
+        <button type="button" class="btn_login mui-btn mui-btn-primary">登录</button>&nbsp;&nbsp;
+        <button type="reset" class="mui-btn mui-btn-danger">重置</button>
+      </div>
+    </form>
+
   </div>
+
+
+
+
 
 
   <div class="lt_footer">
@@ -55,44 +64,46 @@
           <p>购物车</p>
         </a>
       </li>
-      <li>
-        <a href="user.html">
+      <li class="now">
+        <a href="user.html" >
           <span class="fa fa-user"></span>
           <p>会员中心</p>
         </a>
       </li>
     </ul>
   </div>
+
 </div>
-
-
-
 <script type="text/html" id="tpl">
-  
-  {{ if arr.length===0}}
-<p>没有搜索记录</p>
+    {{if data.length===0}}
+ <p>没有搜索到相关的商品</p>
 {{/if}}
-{{if arr.length>0}}
-          <div class="title mui-clearfix">
-            <span class="mui-pull-left">搜索历史</span>
-            <span class="mui-pull-right fa fa-trash icon_empty">清空记录</span>
-          </div>
-          <ul class="content">
-          {{each arr v i}}
-            <li class="mui-clearfix">
-              <a href="searchList.html?key={{v}}" class="mui-pull-left">{{v}}</a>
-              <span data-index="{{i}}" class="mui-pull-right fa fa-close"></span>
-            </li>
+
+{{each data v i}}
+<a href="product.html?productId={{v.id}}" class="item1">
+   {{if v.pic.length === 0}}
+   <img src="images/product.jpg">
+   {{/if}}
+   {{if v.pic.length > 0}}
+    <img src="{{v.pic[0].picAddr}}">
+   {{/if}}
+    <p class="mui-ellipsis-2">{{v.proName}}</p>
+    <p class="price">
+      <span>&yen;{{v.price}}</span>
+      <span>&yen;{{v.oldPrice}}</span>
+    </p>
+    <button class="mui-btn-blue buy_now" >立即购买</button>
+  </a>
 {{/each}}
-          </ul>
-{{/if}}
+
 </script>
 <script src="lib/mui/js/mui.js"></script>
 <script src="lib/zepto/zepto.min.js"></script>
 <script src="lib/artTemplate/template-web.js"></script>
-<script src="js/search.js"></script>
+
+<script src="js/common.js"></script>
+<script src="js/login.js"></script>
 </body>
 </html>
-
 
 

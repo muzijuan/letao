@@ -115,3 +115,25 @@ ul{
 .lt_footer ul li.now p{
 	color: darkorange
 }
+
+
+/*加载页面*/
+.loading{
+width: 50px;
+height: 50px;
+border: 1px solid #007aff;
+position: absolute;
+left:50%;
+top:200px;
+transform: translateX(-50%);
+animation:zhuan 1s infinite ease-in-out;
+}
+@keyframes zhuan{
+ from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+
+}

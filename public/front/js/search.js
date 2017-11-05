@@ -77,5 +77,3 @@ localStorage.setItem("lt_search_history",JSON.stringify(arr));
 location.href="searchList.html?key="+key;
 })
 
-
-//3.添加功能

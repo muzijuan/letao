@@ -71,40 +71,39 @@ $(function () {
         }
     });
 
-    var $form=$("#form");
-    $form.bootstrapValidator({
-        excluded:[],
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields:{
-            categoryId:{
-                validators:{
-                    notEmpty:{
-                        message:"请选择一级分类"
-                    }
-                }
-            },
-            brandName:{
-            validators:{
-               notEmpty:{
-                   message:"请输入二级分类的名称"
-               }
-
-            }
-            },
-            brandLogo:{
-                validators:{
-                    notEmpty:{
-                        message:"请上传图片"
-                    }
-                }
-            }
+ var $form = $("#form");
+  $form.bootstrapValidator({
+    //默认不校验的配置
+    excluded:[],
+    feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+    fields:{
+      categoryId:{
+        validators:{
+          notEmpty:{
+            message:"请选择一级分类"
+          }
         }
-    });
-
+      },
+      brandName:{
+        validators:{
+          notEmpty:{
+            message:"请输入二级分类的名称"
+          }
+        }
+      },
+      brandLogo:{
+        validators:{
+          notEmpty:{
+            message:"请上传图片"
+          }
+        }
+      }
+    }
+  });
    $form.on("success.form.bv",function(e){
        e.preventDefault();
        $.ajax({
